@@ -22,7 +22,7 @@ object Demo extends XApp with App {
       println(s"YELLOW: $YELLOW Hello world! $REVERSED REVERSED: Hello world! $REVERSED REVERSED: Hello world! $RESET")
       println(s"BLUE: $BLUE Hello world! $REVERSED REVERSED: Hello world! $REVERSED REVERSED: Hello world! $RESET")
       println(s"MAGENTA: $MAGENTA Hello world! $REVERSED REVERSED: Hello world! $REVERSED REVERSED: Hello world! $RESET")
-      println(s"CYAN: $CYAN Hello world! $REVERSED REVERSED: Hello world! $REVERSED REVERSED: Hello world! $RESET")
+      println(s"CYAN: $CYAN Hello world! $REVERSED\t\t\t\t\t\tREVERSED: Hello world! $REVERSED REVERSED: Hello world! $RESET")
       //println(s"GRAY: $GRAY Hello world! $REVERSED REVERSED: Hello world! $REVERSED REVERSED: Hello world! $RESET")
       println(s"WHITE: $WHITE Hello world! $REVERSED REVERSED: Hello world! $REVERSED REVERSED: Hello world! $RESET")
 

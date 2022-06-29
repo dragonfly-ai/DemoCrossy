@@ -11,10 +11,10 @@ object DivConsole {
 }
 
 class DivConsole private (
-                           val id:String,
-                           val dFG:String,
-                           val dBG:String,
-                           val style:String
+  val id:String,
+  val dFG:String,
+  val dBG:String,
+  val style:String
 ) {
 
   private var fg: String = dFG
@@ -50,7 +50,7 @@ class DivConsole private (
   }
 
   var parent:dom.HTMLElement = cdiv
-  var currentSpan:dom.HTMLSpanElement = newSpan()
+  var currentSpan:dom.HTMLSpanElement = newLine()
 
   def modStyle:String = {
     var modStr:String = ""
@@ -76,7 +76,7 @@ class DivConsole private (
     currentSpan = ts
   }
 
-  def newLine():Unit = {
+  def newLine():dom.HTMLSpanElement = {
 //    currentSpan.append("\n")
     or = false
     parent = cdiv
@@ -85,6 +85,7 @@ class DivConsole private (
     currentSpan = span
     parent.append(currentSpan)
     lineNumber += 1
+    span
   }
 
   def clearCurrentLine():Unit = {
@@ -101,21 +102,19 @@ class DivConsole private (
     this.reversed = false
     this.or = false
     this.mods.clear()
+
     parent = cdiv
-    currentSpan = newSpan()
-    parent.append(currentSpan)
   }
 
   def apply(os:OutputSignal):Unit = {
-    os match {
-      case OutputSignal.RESET => reset()
-      case ReverseSignal => this.reversed = true
-      case fgc: ForegroundColor => this.fg = fgc.hexColor
-      case bgc: BackgroundColor => this.bg = bgc.hexColor
-      case ss: StyleSignal => this.mods.add(ss)
-      case _ => append(s"Unknown Signal: $os")
-    }
-    nestedSpan()
+    if (os match {
+      case OutputSignal.RESET => reset(); false
+      case ReverseSignal => if(this.reversed) false else { reversed = true; true }
+      case fgc: ForegroundColor => if (this.fg != fgc.hexColor) { this.fg = fgc.hexColor; true } else false
+      case bgc: BackgroundColor => if (this.bg != bgc.hexColor) { this.bg = bgc.hexColor; true } else false
+      case ss: StyleSignal => val l:Int = this.mods.size; this.mods.add(ss); this.mods.size == l
+      case _ => append(s"Unknown Signal: $os"); false
+    }) nestedSpan()
   }
 
   def append(s:String):Unit = if (s.nonEmpty) {
