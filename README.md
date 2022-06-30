@@ -69,3 +69,10 @@ def light(id:String = "console", style:String = ""):DivConsole
 &nbsp;&nbsp;&nbsp;The `id` parameter represents the selectable element id of a `<div>` element already present in the host html, however, if the page hasn't declared a `<div>` element with that id, DivConsole appends a new one to the `<body>`.
 &nbsp;&nbsp;&nbsp;The `fg` and `bg` parameters represent the html hex strings of foreground and background colors respectively.  In the DivConsole, these map to css attributes: `color` and `background-color`.
 &nbsp;&nbsp;&nbsp;Any additional customization occurs through the `style` parameter which should take the form of correctly formatted inline css.  For example, for padding and overflow scrolling, pass: `style = "padding: 8px; overflow: scroll;"`.  DivConsole will not validate any of these parameters, so users must take care to provide valid css literals.
+
+<br />
+<h3>Live DemoCrossy Demonstrations:</h3>
+
+https://dragonfly.ai/democrossy/index.html
+
+https://dragonfly.ai/cliviz/index.html
