@@ -5498,9 +5498,9 @@ $c_LDemo$$anon$1.prototype.demo__V = (function() {
   var this$6 = $m_s_Console$();
   this$6.out__Ljava_io_PrintStream().println__O__V("INVISIBLE: \u001b[8m Hello world! \u001b[0m");
   var this$7 = $m_s_Console$();
-  this$7.out__Ljava_io_PrintStream().println__O__V("\nColors:");
+  this$7.out__Ljava_io_PrintStream().println__O__V("\u001b[0m\n\nColors:\n\n\n\n\n\n\n");
   var this$8 = $m_s_Console$();
-  this$8.out__Ljava_io_PrintStream().println__O__V("BLACK: \u001b[30m Hello world!\u001b[7mREVERSED: Hello world! \u001b[0m");
+  this$8.out__Ljava_io_PrintStream().println__O__V("BLACK: \u001b[30m Hello world!\u001b[7mREVERSED: Hello world! \u001b[0m\u001b[0m");
   var this$9 = $m_s_Console$();
   this$9.out__Ljava_io_PrintStream().println__O__V("RED: \u001b[31m Hello world!\u001b[7mREVERSED: Hello world! \u001b[0m");
   var this$10 = $m_s_Console$();
@@ -5636,14 +5636,13 @@ $c_Lai_dragonfly_democrossy_native_BrowserDivConsole.prototype.nestedSpan__Lorg_
     this.Lai_dragonfly_democrossy_native_BrowserDivConsole__f_currentSpan.removeAttribute("style");
     var span = this.Lai_dragonfly_democrossy_native_BrowserDivConsole__f_currentSpan
   } else {
-    var span = this.newSpan__Lorg_scalajs_dom_HTMLSpanElement()
+    var tempSpan = this.newSpan__Lorg_scalajs_dom_HTMLSpanElement();
+    this.Lai_dragonfly_democrossy_native_BrowserDivConsole__f_currentLine.append(tempSpan);
+    var span = tempSpan
   };
   var spanStyle = this.currentStyle__T();
   if ((spanStyle !== "")) {
-    span.setAttribute("style", this.currentStyle__T());
-    this.Lai_dragonfly_democrossy_native_BrowserDivConsole__f_currentLine.append(span)
-  } else {
-    this.Lai_dragonfly_democrossy_native_BrowserDivConsole__f_currentSpan = this.Lai_dragonfly_democrossy_native_BrowserDivConsole__f_currentLine
+    span.setAttribute("style", spanStyle)
   };
   return span
 });
@@ -10489,8 +10488,12 @@ $c_Lai_dragonfly_democrossy_native_DivOutputStream.prototype.write__T__V = (func
         break matchResult2
       };
       if ((x5 === 27)) {
-        var index$1 = ((1 + i) | 0);
-        var $$x1 = ((65535 & $uI(s.charCodeAt(index$1))) === 91)
+        if ((((3 + i) | 0) < $uI(s.length))) {
+          var index$1 = ((1 + i) | 0);
+          var $$x1 = ((65535 & $uI(s.charCodeAt(index$1))) === 91)
+        } else {
+          var $$x1 = false
+        }
       } else {
         var $$x1 = false
       };

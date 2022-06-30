@@ -94,12 +94,16 @@ class BrowserDivConsole private (
       //if (currentSpan.hasAttribute("style"))
       currentSpan.removeAttribute("style")
       currentSpan
-    } else newSpan()
+    } else {
+      val tempSpan:dom.HTMLSpanElement = newSpan()
+      currentLine.append(tempSpan)
+      tempSpan
+    }
+
     val spanStyle:String = currentStyle()
-    if (spanStyle.nonEmpty) {
-      span.setAttribute("style", currentStyle())
-      currentLine.append(span)
-    } else currentSpan = currentLine
+
+    if (spanStyle.nonEmpty) span.setAttribute("style", spanStyle)
+
     span
   }
 

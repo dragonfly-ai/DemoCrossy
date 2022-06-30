@@ -26,7 +26,7 @@ class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
           start = i + 1
           divConsole.newLine()
         case '\r' => divConsole.overWright()
-        case '\u001b' if s.charAt(i + 1) == '[' => // Is this a formatting signal?
+        case '\u001b' if (i+3) < s.length && s.charAt(i + 1) == '[' => // Is this a formatting signal?
 
           var end: Int = i + 2
 
