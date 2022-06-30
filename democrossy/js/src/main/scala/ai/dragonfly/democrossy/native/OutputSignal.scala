@@ -26,24 +26,23 @@ case class StyleSignal(override val name:String, override val console:String, cs
 
 object OutputSignal {
 
-  final val BLACK: OutputSignal = ForegroundColor("BLACK", Console.BLACK, "#000000;")
-  final val RED: OutputSignal = ForegroundColor("RED", Console.RED, "#f05147;")
-  final val GREEN: OutputSignal = ForegroundColor("GREEN", Console.GREEN, "#5a8f2c;")
-  final val YELLOW: OutputSignal = ForegroundColor("YELLOW", Console.YELLOW, "#a18415;")
-  final val BLUE: OutputSignal = ForegroundColor("BLUE", Console.BLUE, "#3384cb;")
-  final val MAGENTA: OutputSignal = ForegroundColor("MAGENTA", Console.MAGENTA, "#a76f9c;")
-  final val CYAN: OutputSignal = ForegroundColor("CYAN", Console.CYAN, "#109aa2;")
-  final val GRAY: OutputSignal = ForegroundColor("GRAY", Console.WHITE, "#807e6c;")
-  final val WHITE: OutputSignal = ForegroundColor("WHITE", Console.RESET, "#eeeeee;")
+  final val BLACK: OutputSignal = ForegroundColor("BLACK", Console.BLACK, "#000000")
+  final val RED: OutputSignal = ForegroundColor("RED", Console.RED, "#f05147")
+  final val GREEN: OutputSignal = ForegroundColor("GREEN", Console.GREEN, "#5a8f2c")
+  final val YELLOW: OutputSignal = ForegroundColor("YELLOW", Console.YELLOW, "#a18415")
+  final val BLUE: OutputSignal = ForegroundColor("BLUE", Console.BLUE, "#3384cb")
+  final val MAGENTA: OutputSignal = ForegroundColor("MAGENTA", Console.MAGENTA, "#a76f9c")
+  final val CYAN: OutputSignal = ForegroundColor("CYAN", Console.CYAN, "#109aa2")
+  final val WHITE: OutputSignal = ForegroundColor("GRAY", Console.WHITE, "#807e6c")
 
-  final val BLACK_B: OutputSignal = BackgroundColor("BLACK_B", Console.BLACK_B, "#000000;")
-  final val RED_B: OutputSignal = BackgroundColor("RED_B", Console.RED_B, "#f05147;")
-  final val GREEN_B: OutputSignal = BackgroundColor("GREEN_B", Console.GREEN_B, "#5a8f2c;")
-  final val YELLOW_B: OutputSignal = BackgroundColor("YELLOW_B", Console.YELLOW_B, "#a18415;")
-  final val BLUE_B: OutputSignal = BackgroundColor("BLUE_B", Console.BLUE_B, "#3384cb;")
-  final val MAGENTA_B: OutputSignal = BackgroundColor("MAGENTA_B", Console.MAGENTA_B, "#a76f9c;")
-  final val CYAN_B: OutputSignal = BackgroundColor("CYAN_B", Console.CYAN_B, "#109aa2;")
-  final val WHITE_B: OutputSignal = BackgroundColor("WHITE_B", Console.WHITE_B, "#eeeeee;")
+  final val BLACK_B: OutputSignal = BackgroundColor("BLACK_B", Console.BLACK_B, "#000000")
+  final val RED_B: OutputSignal = BackgroundColor("RED_B", Console.RED_B, "#f05147")
+  final val GREEN_B: OutputSignal = BackgroundColor("GREEN_B", Console.GREEN_B, "#5a8f2c")
+  final val YELLOW_B: OutputSignal = BackgroundColor("YELLOW_B", Console.YELLOW_B, "#a18415")
+  final val BLUE_B: OutputSignal = BackgroundColor("BLUE_B", Console.BLUE_B, "#3384cb")
+  final val MAGENTA_B: OutputSignal = BackgroundColor("MAGENTA_B", Console.MAGENTA_B, "#a76f9c")
+  final val CYAN_B: OutputSignal = BackgroundColor("CYAN_B", Console.CYAN_B, "#109aa2")
+  final val WHITE_B: OutputSignal = BackgroundColor("WHITE_B", Console.WHITE_B, "#807e6c")
 
   final val RESET: OutputSignal = StyleSignal("RESET", Console.RESET, "")
 
@@ -63,7 +62,7 @@ object OutputSignal {
     Console.BLUE -> BLUE,
     Console.MAGENTA -> MAGENTA,
     Console.CYAN -> CYAN,
-    Console.WHITE -> GRAY,
+    Console.WHITE -> WHITE,
     // Background Colors
     Console.BLACK_B -> BLACK_B,
     Console.RED_B -> RED_B,

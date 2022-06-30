@@ -1,7 +1,10 @@
 package ai.dragonfly
 
-import java.io.PrintStream
-
 package object democrossy {
-  lazy val os:PrintStream = ai.dragonfly.democrossy.native.os
+
+  val DivConsole:ai.dragonfly.democrossy.native.DivConsole.type = ai.dragonfly.democrossy.native.DivConsole
+
+  class DivConsole
+
+  def out(dc:DivConsole):java.io.PrintStream = ai.dragonfly.democrossy.native.out(dc)
 }

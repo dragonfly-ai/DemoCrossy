@@ -2,7 +2,7 @@ package ai.dragonfly.democrossy.native
 
 import java.io.OutputStream
 
-class DivOutputStream(val divConsole:DivConsole = DivConsole()) extends OutputStream {
+class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
 
   val out:java.io.PrintStream = System.out
 

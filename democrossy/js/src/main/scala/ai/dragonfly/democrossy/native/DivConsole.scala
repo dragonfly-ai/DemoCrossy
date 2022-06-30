@@ -1,21 +1,43 @@
 package ai.dragonfly.democrossy.native
 
+import ai.dragonfly.democrossy.*
 import org.scalajs.dom
 
 import scala.collection.mutable
 
 object DivConsole {
-  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):DivConsole = new DivConsole(id, fg, bg, style)
+
+  val browser:Boolean = try {
+    dom.window.document.head.append({
+      val style:dom.HTMLStyleElement  = dom.document.createElement("style").asInstanceOf[dom.HTMLStyleElement]
+      style.append("@keyframes blink { 0% { opacity: 1; } 100% { opacity: 0; } }")
+      style
+    })
+    true
+  } catch {
+    case _ :Throwable => false
+  }
+
+  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):DivConsole = {
+    if (browser) BrowserDivConsole(id, fg, bg, style)
+    else new DivConsole()
+  }
+
   def dark(i:String = "console", s:String = ""):DivConsole = apply(id = i, style = s)
+
   def light(id:String = "console", style:String = ""):DivConsole = apply(id, "#2b2b2b", "#eeeeee", style)
 }
 
-class DivConsole private (
+object BrowserDivConsole {
+  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):DivConsole = new BrowserDivConsole(id, fg, bg, style)
+}
+
+class BrowserDivConsole private (
   val id:String,
   val dFG:String,
   val dBG:String,
   val style:String
-) {
+) extends DivConsole {
 
   private var fg: String = dFG
   private var bg: String = dBG
@@ -24,15 +46,7 @@ class DivConsole private (
   private val mods:mutable.HashSet[StyleSignal] = new mutable.HashSet[StyleSignal]()
   private var lineNumber:Long = 0L
 
-  val body:dom.HTMLBodyElement = {
-    dom.window.document.head.append({
-      val style:dom.HTMLStyleElement  = dom.document.createElement("style").asInstanceOf[dom.HTMLStyleElement]
-      style.append("@keyframes blink { 0% { opacity: 1; } 100% { opacity: 0; } }")
-      style
-    })
-
-    dom.window.document.body.asInstanceOf[dom.HTMLBodyElement]
-  }
+  val body:dom.HTMLBodyElement = dom.window.document.body.asInstanceOf[dom.HTMLBodyElement]
 
   val cdiv:dom.HTMLDivElement = {
     val temp:dom.HTMLDivElement = dom.window.document.getElementById(id) match {
@@ -112,7 +126,7 @@ class DivConsole private (
       case ReverseSignal => if(this.reversed) false else { reversed = true; true }
       case fgc: ForegroundColor => if (this.fg != fgc.hexColor) { this.fg = fgc.hexColor; true } else false
       case bgc: BackgroundColor => if (this.bg != bgc.hexColor) { this.bg = bgc.hexColor; true } else false
-      case ss: StyleSignal => val l:Int = this.mods.size; this.mods.add(ss); this.mods.size == l
+      case ss: StyleSignal => if (this.mods.contains(ss)) false else this.mods.add(ss)
       case _ => append(s"Unknown Signal: $os"); false
     }) nestedSpan()
   }
