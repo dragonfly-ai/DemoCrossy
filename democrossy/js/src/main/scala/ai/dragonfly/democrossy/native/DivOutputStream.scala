@@ -6,6 +6,14 @@ class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
 
   val out:java.io.PrintStream = System.out
 
+  def appendChunk( s:String, start:Int, i:Int ):Unit = {
+    if (start < i) {
+      val chunk: String = s.substring(start, i)
+      divConsole.append(chunk)
+      out.print(chunk)
+    }
+  }
+
   def write(s: String): Unit = {
     //out.println(s)
     var start:Int = 0
@@ -13,7 +21,10 @@ class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
 
     while (i < s.length) {
       s.charAt(i) match {
-        case '\n' => divConsole.newLine()
+        case '\n' =>
+          appendChunk(s, start, i)
+          start = i + 1
+          divConsole.newLine()
         case '\r' => divConsole.overWright()
         case '\u001b' if s.charAt(i + 1) == '[' => // Is this a formatting signal?
 
@@ -24,11 +35,7 @@ class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
           val signal: String = s.substring(i, end)
 
           if (signal.endsWith("m")) {
-            if (start < i) {
-              val chunk: String = s.substring(start, i)
-              divConsole.append(chunk)
-              out.print(chunk)
-            }
+            appendChunk(s, start, i)
 
             OutputSignal.controlSignals.get(signal) match {
               case Some(os: OutputSignal) => divConsole(os)
@@ -42,11 +49,9 @@ class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
       }
       i += 1
     }
-    if (start < i) {
-      val chunk:String = s.substring(start, i)
-      divConsole.append(chunk)
-      out.print(chunk)
-    }
+
+    appendChunk(s, start, i)
+
   }
 
   override def write(b: Int): Unit = write((b & 0x000000ff).toChar.toString)

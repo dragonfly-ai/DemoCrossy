@@ -63,8 +63,8 @@ class BrowserDivConsole private (
     temp
   }
 
-  var parent:dom.HTMLElement = cdiv
-  var currentSpan:dom.HTMLSpanElement = newLine()
+  var currentLine:dom.HTMLSpanElement = newLine()
+  var currentSpan:dom.HTMLSpanElement = newSpan()
 
   def modStyle:String = {
     var modStr:String = ""
@@ -72,40 +72,59 @@ class BrowserDivConsole private (
     modStr
   }
 
-  def currentStyle():String = (
-    if (reversed) s"color: $bg;background-color: $fg;"
-    else s"color: $fg;background-color: $bg;"
-  ) + modStyle
+  def colorCss(tfg:String, tbg:String): String = {
+    (if (tfg == dFG) "" else s"color: $tfg;") + (if (tbg == dBG) "" else s"background-color: $tbg;")
+  }
+
+  def colorStyle:String = {
+    if (reversed) colorCss(bg, fg)
+    else colorCss(fg, bg)
+  }
+
+  def currentStyle():String = s"$colorStyle$modStyle"
 
   def newSpan():dom.HTMLSpanElement = {
     val span:dom.HTMLSpanElement = dom.document.createElement("span").asInstanceOf[dom.HTMLSpanElement]
-    span.setAttribute("style", currentStyle() )
+    currentSpan = span
     span
   }
 
-  def nestedSpan():Unit = {
-    val ts:dom.HTMLSpanElement = newSpan()
-    currentSpan.append(ts)
-    parent = currentSpan
-    currentSpan = ts
+  def nestedSpan():dom.HTMLSpanElement = {
+    val span:dom.HTMLSpanElement = if (currentSpan.childNodes.size < 1) {
+      //if (currentSpan.hasAttribute("style"))
+      currentSpan.removeAttribute("style")
+      currentSpan
+    } else newSpan()
+    val spanStyle:String = currentStyle()
+    if (spanStyle.nonEmpty) {
+      span.setAttribute("style", currentStyle())
+      currentLine.append(span)
+    } else currentSpan = currentLine
+    span
   }
 
   def newLine():dom.HTMLSpanElement = {
-//    currentSpan.append("\n")
     or = false
-    parent = cdiv
+
+    if (currentLine != currentSpan && currentSpan.childNodes.size < 1) {
+      currentLine.removeChild(currentSpan)
+    }
+
     val span:dom.HTMLSpanElement = newSpan()
-    span.setAttribute("id", lineNumber.toString)
-    currentSpan = span
-    parent.append(currentSpan)
+    span.setAttribute("id", s"$id-$lineNumber")
+    cdiv.append("\n")
+    cdiv.append(span)
+    currentLine = span
     lineNumber += 1
     span
   }
 
   def clearCurrentLine():Unit = {
-    while (currentSpan.childNodes.size > 0) {
-      currentSpan.removeChild(currentSpan.firstChild)
+    while (currentLine.childNodes.size > 0) {
+      currentLine.removeChild(currentLine.firstChild)
     }
+    val span:dom.HTMLSpanElement = nestedSpan()
+    currentLine.append(span)
   }
 
   def overWright():Unit = this.or = true
@@ -116,19 +135,19 @@ class BrowserDivConsole private (
     this.reversed = false
     this.or = false
     this.mods.clear()
-
-    parent = cdiv
   }
 
   def apply(os:OutputSignal):Unit = {
-    if (os match {
-      case OutputSignal.RESET => reset(); false
-      case ReverseSignal => if(this.reversed) false else { reversed = true; true }
-      case fgc: ForegroundColor => if (this.fg != fgc.hexColor) { this.fg = fgc.hexColor; true } else false
-      case bgc: BackgroundColor => if (this.bg != bgc.hexColor) { this.bg = bgc.hexColor; true } else false
-      case ss: StyleSignal => if (this.mods.contains(ss)) false else this.mods.add(ss)
-      case _ => append(s"Unknown Signal: $os"); false
-    }) nestedSpan()
+    //val prevStyle:String = currentStyle()
+    os match {
+      case OutputSignal.RESET => reset()
+      case ReverseSignal => reversed = true
+      case fgc: ForegroundColor => this.fg = fgc.hexColor
+      case bgc: BackgroundColor => this.bg = bgc.hexColor
+      case ss: StyleSignal => this.mods.add(ss)
+      case _ => //append(s"Unknown Signal: $os")
+    }
+    nestedSpan()
   }
 
   def append(s:String):Unit = if (s.nonEmpty) {

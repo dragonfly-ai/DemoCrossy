@@ -6,7 +6,7 @@ ThisBuild / scalacOptions ++= Seq("-feature", "-deprecation")
 
 lazy val democrossy = crossProject(JSPlatform, JVMPlatform).settings(
   name := "democrossy",
-  version := "0.01"
+  version := "0.0101"
 ).jvmSettings(
   libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.1.0"
 ).jsSettings(

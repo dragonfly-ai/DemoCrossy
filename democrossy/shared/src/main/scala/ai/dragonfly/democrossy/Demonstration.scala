@@ -11,9 +11,9 @@ trait Demonstration {
   def demo():Unit
 
   def demonstrate: Unit = {
-    println(s"$RESET/*$GREEN Begin $BOLD$name$RESET$GREEN Demonstration $RESET*/")
+    println(s"${RESET}/*$GREEN Begin ${BOLD}$name${RESET}${GREEN} Demonstration${RESET} */")
     demo()
-    println(s"$RESET/*$RED End $BOLD$name$RESET$RED Demonstration $RESET*/")
+    println(s"${RESET}/*$RED End ${BOLD}$name${RESET}${RED} Demonstration${RESET} */")
   }
 
   def main(args:Array[String]):Unit = demonstrate
