@@ -103,6 +103,7 @@ class BrowserDivConsole private (
     val spanStyle:String = currentStyle()
 
     if (spanStyle.nonEmpty) span.setAttribute("style", spanStyle)
+    else currentSpan = currentLine
 
     span
   }
@@ -110,7 +111,7 @@ class BrowserDivConsole private (
   def newLine():dom.HTMLSpanElement = {
     or = false
 
-    if (currentLine != currentSpan && currentSpan.childNodes.size < 1) {
+    if (lineNumber > 0 && currentLine != currentSpan && currentSpan.childNodes.size < 1) {
       currentLine.removeChild(currentSpan)
     }
 
