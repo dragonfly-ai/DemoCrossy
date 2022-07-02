@@ -3,8 +3,7 @@ package ai.dragonfly.democrossy.native
 import java.io.OutputStream
 
 class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
-
-  val out:java.io.PrintStream = System.out
+  final val out:java.io.PrintStream = System.out
 
   def appendChunk( s:String, start:Int, i:Int ):Unit = {
     if (start < i) {
@@ -25,6 +24,8 @@ class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
           appendChunk(s, start, i)
           start = i + 1
           divConsole.newLine()
+          out.print('\n')
+          out.flush()
         case '\r' => divConsole.overWright()
         case '\u001b' if (i+3) < s.length && s.charAt(i + 1) == '[' => // Is this a formatting signal?
 
@@ -51,7 +52,6 @@ class DivOutputStream(val divConsole:BrowserDivConsole) extends OutputStream {
     }
 
     appendChunk(s, start, i)
-
   }
 
   override def write(b: Int): Unit = write((b & 0x000000ff).toChar.toString)
