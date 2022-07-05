@@ -156,6 +156,8 @@ class BrowserDivConsole private (
   }
 
   def append(s:String):Unit = if (s.nonEmpty) {
+    //val s = s0.replaceAll("\\[[0-9]{1,2}m", "")
+
     if (or) clearCurrentLine()
     currentSpan.append(s)
     or = false

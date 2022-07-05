@@ -14,8 +14,8 @@ object Demo extends XApp(DivConsole(style = "padding: 8px; width: 50%;")) with A
       println(s"BLINK: $BLINK Hello world! $RESET")
       println(s"REVERSED: ${REVERSED}Hello world! $RESET")
       println(s"INVISIBLE: $INVISIBLE Hello world! $RESET")
-
-      println(s"$RESET\n\nColors:\n\n\n\n\n\n\n")
+      println("\n\n\n\n\n\n\n")
+      println(s"$RESET\n\nColors:")
       println(s"BLACK: $BLACK Hello world!${REVERSED}REVERSED: Hello world! $RESET$RESET")
       println(s"RED: $RED Hello world!${REVERSED}REVERSED: Hello world! $RESET")
       println(s"GREEN: $GREEN Hello world!${REVERSED}REVERSED: Hello world! $RESET")

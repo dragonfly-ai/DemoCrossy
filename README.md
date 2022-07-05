@@ -15,7 +15,7 @@
 
 ```scala
 resolvers += "dragonfly.ai" at "https://code.dragonfly.ai/"
-libraryDependencies += "ai.dragonfly.code" %%% "democrossy" % "0.0104"
+libraryDependencies += "ai.dragonfly.code" %%% "democrossy" % "0.0105"
 ```
 
 &nbsp;&nbsp;&nbsp;Then extend the XApp trait from the main class.
