@@ -2,7 +2,8 @@ import ai.dragonfly.democrossy.*
 
 import Console.*
 
-object Demo extends XApp(DivConsole(style = "padding: 8px; width: 50%;")) with App {
+object Demo extends XApp(DivConsole(style = "padding: 8px; width: 75%;")) with App {
+
 
   val d1: Demonstration = new Demonstration {
 
@@ -31,7 +32,7 @@ object Demo extends XApp(DivConsole(style = "padding: 8px; width: 50%;")) with A
 
       println(s"\nTabs and Newlines:\n\tOnce upon a time in a land far away,\nthere lived a lonely command line Scala\napplication.\n\tOne day, you deployed it through a\nbrowser interface to make it more\naccessible.\n\tAs people began to use it, the\nlittle app felt loved and lived happily\never after.\n\tThe End\n\n")
       println(s"Testing $RED 1 $GREEN 2 $BLUE 3 $RESET $BLINK !!! $RESET")
-
+      println("\n")
     }
 
     override def name: String = "Hello World"
