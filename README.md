@@ -1,13 +1,12 @@
 # DemoCrossy
 
 
-&nbsp;&nbsp;&nbsp;A Scala.js library that painlessly routes standard ouptut from Scala.js cross projects to selectable DOMElements when deployed in the browser while leaving stdout functionally unaffected when deployed in JVM and Node.js environments.
+&nbsp;&nbsp;&nbsp;A Scala.js library that painlessly routes standard ouptut from Scala.js cross projects to selectable DOMElements when deployed in the browser while leaving stdout functionally unaffected when deployed in Native, JVM and Node.js environments.
 <br />
 
 <h3>What is DemoCrossy's Intended Purpose:</h3>
 
-&nbsp;&nbsp;&nbsp;As a tool, DemoCrossy occupies a space between Scastie and Fiddle by making it painlessly easy to deploy Scala.js Cross Projects with command line applications directly into web pages.  This gives developers a painless way to deploy demonstrations of their libraries for other developers to painlessly experience without pulling source code or adding dependencies.
-
+&nbsp;&nbsp;&nbsp;As a tool, DemoCrossy occupies a space between Scastie and Fiddle by making it painless and easy to deploy Scala.js Cross Projects with command line applications directly into web pages.  This gives developers a convenient way to deploy demonstrations of their libraries so that other developers can comfortably evaluate them without pulling source code or installing dependencies.
 
 <h3>How to use DemoCrossy:</h3>
 
@@ -15,7 +14,7 @@
 
 ```scala
 resolvers += "dragonfly.ai" at "https://code.dragonfly.ai/"
-libraryDependencies += "ai.dragonfly.code" %%% "democrossy" % "0.0105"
+libraryDependencies += "ai.dragonfly.code" %%% "democrossy" % "0.02"
 ```
 
 &nbsp;&nbsp;&nbsp;Then extend the XApp trait from the main class.
