@@ -1,14 +1,21 @@
-ThisBuild / scalaVersion := "3.2.1"
-ThisBuild / publishTo := Some( Resolver.file( "file",  new File("/var/www/maven" ) ) )
-ThisBuild / resolvers += "ai.dragonfly.code" at "https://code.dragonfly.ai/"
+ThisBuild / tlBaseVersion := "0.1"
+
 ThisBuild / organization := "ai.dragonfly.code"
-ThisBuild / scalacOptions ++= Seq("-feature", "-deprecation")
+ThisBuild / organizationName := "dragonfly.ai"
+ThisBuild / startYear := Some(2023)
+ThisBuild / licenses := Seq(License.Apache2)
+ThisBuild / developers := List( tlGitHubDev("dragonfly-ai", "dragonfly.ai") )
+
+ThisBuild / scalaVersion := "3.2.1"
+ThisBuild / tlSonatypeUseLegacyHost := false
+ThisBuild / tlSitePublishBranch := Some("main")
 
 lazy val democrossy = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .crossType(CrossType.Full)
   .settings(
   name := "democrossy",
-  version := "0.02"
+  description := "Re-rout console output to a selectable DOM element in ScalaJS, without impeding default behavior in Scala JVM and Scala Native!",
+  version := "0.1"
 ).jvmSettings(
   libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.1.0"
 ).jsSettings(
@@ -29,3 +36,6 @@ lazy val demo = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   ).jvmSettings(
     exportJars := true
   )
+
+
+lazy val docs = project.in(file("site")).enablePlugins(TypelevelSitePlugin)
