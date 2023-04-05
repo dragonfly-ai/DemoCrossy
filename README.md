@@ -22,21 +22,21 @@ libraryDependencies += "ai.dragonfly.code" %%% "democrossy" % "0.02"
 &nbsp;&nbsp;&nbsp;If it relies on a main method, simply extend XApp directly:
 
 ```scala
-object Demo extends XApp(DivConsole()) { ... }
-object Demo extends XApp(DivConsole(id = "domId")) { ... }
-object Demo extends XApp(DivConsole.light(id = "domId")) { ... }
-object Demo extends XApp(DivConsole.dark(id = "domId")) { ... }
-object Demo extends XApp(DivConsole(id = "domId", fg = "#fefefe", bg = "#3d3d3d", style = "padding: 8px; width: 50%;")) { ... }
+object Demo extends XApp(DivConsole()) { /*...*/ }
+object Demo extends XApp(DivConsole(id = "domId")) { /*...*/ }
+object Demo extends XApp(DivConsole.light(id = "domId")) { /*...*/ }
+object Demo extends XApp(DivConsole.dark(id = "domId")) { /*...*/ }
+object Demo extends XApp(DivConsole(id = "domId", fg = "#fefefe", bg = "#3d3d3d", style = "padding: 8px; width: 50%;")) { /*...*/ }
 ```
 
 &nbsp;&nbsp;&nbsp;If the main class extends App, it can inherit from both XApp and App as follows:
 
 ```scala
-object Demo extends XApp(DivConsole()) with App { ... }
-object Demo extends XApp(DivConsole(id = "domId")) with App { ... }
-object Demo extends XApp(DivConsole.light(id = "domId")) with App { ... }
-object Demo extends XApp(DivConsole.dark(id = "domId")) with App { ... }
-object Demo extends XApp(DivConsole(id = "domId", fg = "#fefefe", bg = "#3d3d3d", style = "padding: 8px; width: 50%;")) with App { ... }
+object Demo extends XApp(DivConsole()) with App { /*...*/ }
+object Demo extends XApp(DivConsole(id = "domId")) with App { /*...*/ }
+object Demo extends XApp(DivConsole.light(id = "domId")) with App { /*...*/ }
+object Demo extends XApp(DivConsole.dark(id = "domId")) with App { /*...*/ }
+object Demo extends XApp(DivConsole(id = "domId", fg = "#fefefe", bg = "#3d3d3d", style = "padding: 8px; width: 50%;")) with App { /*...*/ }
 ```
 <br />
 <h3>How DemoCrossy Works:</h3>
@@ -72,6 +72,5 @@ def light(id:String = "console", style:String = ""):DivConsole
 <br />
 <h3>Live DemoCrossy Demonstrations:</h3>
 
-https://dragonfly.ai/democrossy/index.html
-
-https://dragonfly.ai/cliviz/index.html
+<a href="https://dragonfly-ai.github.io/DemoCrossy/">Built in Demo</a><br />
+<a href="https://dragonfly.ai/cliviz/index.html">Demonstration of cliviz, a command line visualization tool for Scala: JVM, JS, and Native.</a>

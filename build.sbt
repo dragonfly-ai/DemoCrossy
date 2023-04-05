@@ -1,6 +1,6 @@
 ThisBuild / tlBaseVersion := "0.1"
 
-ThisBuild / organization := "ai.dragonfly.code"
+ThisBuild / organization := "ai.dragonfly"
 ThisBuild / organizationName := "dragonfly.ai"
 ThisBuild / startYear := Some(2023)
 ThisBuild / licenses := Seq(License.Apache2)
@@ -24,14 +24,15 @@ lazy val democrossy = crossProject(JSPlatform, JVMPlatform, NativePlatform)
 
 lazy val demo = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .crossType(CrossType.Full)
+  .enablePlugins(NoPublishPlugin)
   .dependsOn(democrossy)
   .settings(
     name := "demo",
     Compile / mainClass := Some("Demo"),
   )
   .jsSettings(
-    Compile / fastOptJS / artifactPath := file("./demo/public_html/js/main.js"),
-    Compile / fullOptJS / artifactPath := file("./demo/public_html/js/main.js"),
+    Compile / fastOptJS / artifactPath := file("./docs/js/main.js"),
+    Compile / fullOptJS / artifactPath := file("./docs/js/main.js"),
     scalaJSUseMainModuleInitializer := true
   ).jvmSettings(
     exportJars := true
