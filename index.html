@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
     <meta name="generator" content="Laika 0.18.1 + Helium Theme" />
     <title>DemoCrossy</title>
     
-      <meta name="author" content="dragonfly.ai"/>
+    <meta name="author" content="dragonfly.ai"/>
     
     
-      <meta name="description" content="docs"/>
+    <meta name="description" content="docs"/>
     
     
-      <link rel="icon" sizes="32x32" type="image/png" href="https://typelevel.org/img/favicon.png"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
     
-    
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
-    
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:500">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:500">
     
     <link rel="stylesheet" type="text/css" href="helium/icofont.min.css" />
     <link rel="stylesheet" type="text/css" href="helium/laika-helium.css" />
@@ -28,133 +26,59 @@
     
     
     <script> /* for avoiding page load transitions */ </script>
-  </head>
-
-  <body>
-
-    <header id="top-bar">
-
-      <div class="row">
-        <a id="nav-icon">
-          <i class="icofont-laika" title="Navigation">&#xefa2;</i>
-        </a>
-        
-      </div>
-
-      <a class="image-link" href="https://typelevel.org"><img src="https://typelevel.org/img/logo.svg"></a>
-
-      <span class="row links"><a class="icon-link svg-link" href="https://github.com/dragonfly-ai/DemoCrossy"><span title="Source Code"><svg class="svg-icon" width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-  <g class="svg-shape">
-    <path d="M49.995,1c-27.609,-0 -49.995,22.386 -49.995,50.002c-0,22.09 14.325,40.83 34.194,47.444c2.501,0.458 3.413,-1.086 3.413,-2.412c0,-1.185 -0.043,-4.331 -0.067,-8.503c-13.908,3.021 -16.843,-6.704 -16.843,-6.704c-2.274,-5.773 -5.552,-7.311 -5.552,-7.311c-4.54,-3.103 0.344,-3.042 0.344,-3.042c5.018,0.356 7.658,5.154 7.658,5.154c4.46,7.64 11.704,5.433 14.552,4.156c0.454,-3.232 1.744,-5.436 3.174,-6.685c-11.102,-1.262 -22.775,-5.553 -22.775,-24.713c-0,-5.457 1.949,-9.92 5.147,-13.416c-0.516,-1.265 -2.231,-6.348 0.488,-13.233c0,0 4.199,-1.344 13.751,5.126c3.988,-1.108 8.266,-1.663 12.518,-1.682c4.245,0.019 8.523,0.574 12.517,1.682c9.546,-6.47 13.736,-5.126 13.736,-5.126c2.728,6.885 1.013,11.968 0.497,13.233c3.204,3.496 5.141,7.959 5.141,13.416c0,19.209 -11.691,23.436 -22.83,24.673c1.795,1.544 3.394,4.595 3.394,9.26c0,6.682 -0.061,12.076 -0.061,13.715c0,1.338 0.899,2.894 3.438,2.406c19.853,-6.627 34.166,-25.354 34.166,-47.438c-0,-27.616 -22.389,-50.002 -50.005,-50.002"/>
-  </g>
-</svg></span></a><a class="icon-link" href="https://discord.gg/XF3CXcMzqD"><i class="icofont-laika" title="Chat">&#xeed5;</i></a><a class="icon-link" href="https://twitter.com/typelevel"><i class="icofont-laika" title="Twitter">&#xed7a;</i></a></span>
-
-    </header>
-
-    <nav id="sidebar">
-
-      <div class="row">
-        <a class="icon-link svg-link" href="https://github.com/dragonfly-ai/DemoCrossy"><span title="Source Code"><svg class="svg-icon" width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-  <g class="svg-shape">
-    <path d="M49.995,1c-27.609,-0 -49.995,22.386 -49.995,50.002c-0,22.09 14.325,40.83 34.194,47.444c2.501,0.458 3.413,-1.086 3.413,-2.412c0,-1.185 -0.043,-4.331 -0.067,-8.503c-13.908,3.021 -16.843,-6.704 -16.843,-6.704c-2.274,-5.773 -5.552,-7.311 -5.552,-7.311c-4.54,-3.103 0.344,-3.042 0.344,-3.042c5.018,0.356 7.658,5.154 7.658,5.154c4.46,7.64 11.704,5.433 14.552,4.156c0.454,-3.232 1.744,-5.436 3.174,-6.685c-11.102,-1.262 -22.775,-5.553 -22.775,-24.713c-0,-5.457 1.949,-9.92 5.147,-13.416c-0.516,-1.265 -2.231,-6.348 0.488,-13.233c0,0 4.199,-1.344 13.751,5.126c3.988,-1.108 8.266,-1.663 12.518,-1.682c4.245,0.019 8.523,0.574 12.517,1.682c9.546,-6.47 13.736,-5.126 13.736,-5.126c2.728,6.885 1.013,11.968 0.497,13.233c3.204,3.496 5.141,7.959 5.141,13.416c0,19.209 -11.691,23.436 -22.83,24.673c1.795,1.544 3.394,4.595 3.394,9.26c0,6.682 -0.061,12.076 -0.061,13.715c0,1.338 0.899,2.894 3.438,2.406c19.853,-6.627 34.166,-25.354 34.166,-47.438c-0,-27.616 -22.389,-50.002 -50.005,-50.002"/>
-  </g>
-</svg></span></a><a class="icon-link" href="https://discord.gg/XF3CXcMzqD"><i class="icofont-laika" title="Chat">&#xeed5;</i></a><a class="icon-link" href="https://twitter.com/typelevel"><i class="icofont-laika" title="Twitter">&#xed7a;</i></a>
-      </div>
-
-      <ul class="nav-list">
-        <li class="level1 active"><a href="#">DemoCrossy</a></li>
-      </ul>
-
-      <ul class="nav-list">
-        <li class="level1 nav-header">Related Projects</li>
-        
-          <li class="level2"><a href="https://typelevel.org/cats/">cats</a></li>
-        
-      </ul>
-
-    </nav>
-
-    <div id="container">
-
-      <nav id="page-nav">
-        <p class="header"><a href="#">DemoCrossy</a></p>
-
-        <ul class="nav-list">
-        </ul>
-
-        <p class="footer"></p>
-      </nav>
-
-      <main class="content">
-
-        <p>&lt;table style=&quot;width: 98%; height: 98%;&quot;&gt;
-            &lt;tr&gt;
-                &lt;td style=&quot;width:50%;&quot;&gt;Notes:&lt;/td&gt;
-                &lt;td style=&quot;width:50%;&quot;&gt;Console Output:&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr style=&quot;align:top;&quot;&gt;
-                &lt;td&gt;</p>
+</head>
+<body>
+<div id="container">
+    <div class="content" style="width:90%;">
         <h1 id="democrossy" class="title">DemoCrossy</h1>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;A Scala library that painlessly routes standard output to selectable DOMElements via Scala.js when deployed in the browser while leaving stdout functionally unaffected when deployed in Native, JVM and Node.js environments.
-        &lt;br /&gt;</p>
-        <p>&lt;h3&gt;What is DemoCrossy&#39;s Intended Purpose:&lt;/h3&gt;</p>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;As a tool, DemoCrossy occupies a space between Scastie and Fiddle by making it painless and easy to deploy Scala.js Cross Projects with command line applications directly into web pages.  This gives developers a convenient way to deploy demonstrations of their libraries so that other developers can comfortably evaluate them without pulling source code or installing dependencies.</p>
-        <p>&lt;h3&gt;How to use DemoCrossy:&lt;/h3&gt;</p>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;To include it as an SBT dependency, modify <code>build.sbt</code> as follows:</p>
-        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="identifier">resolvers</span><span> += </span><span class="string-literal">&quot;dragonfly.ai&quot;</span><span> </span><span class="identifier">at</span><span> </span><span class="string-literal">&quot;https://code.dragonfly.ai/&quot;</span><span>
-</span><span class="identifier">libraryDependencies</span><span> += </span><span class="string-literal">&quot;ai.dragonfly.code&quot;</span><span> %%% </span><span class="string-literal">&quot;democrossy&quot;</span><span> % </span><span class="string-literal">&quot;0.02&quot;</span></code></pre>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;Then extend the XApp trait from the main class.</p>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;If it relies on a main method, simply extend XApp directly:</p>
-        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>()) { </span><span class="comment">/*...*/</span><span> }
-</span><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>(</span><span class="identifier">id</span><span> = </span><span class="string-literal">&quot;domId&quot;</span><span>)) { </span><span class="comment">/*...*/</span><span> }
-</span><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>.</span><span class="identifier">light</span><span>(</span><span class="identifier">id</span><span> = </span><span class="string-literal">&quot;domId&quot;</span><span>)) { </span><span class="comment">/*...*/</span><span> }
-</span><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>.</span><span class="identifier">dark</span><span>(</span><span class="identifier">id</span><span> = </span><span class="string-literal">&quot;domId&quot;</span><span>)) { </span><span class="comment">/*...*/</span><span> }
-</span><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>(</span><span class="identifier">id</span><span> = </span><span class="string-literal">&quot;domId&quot;</span><span>, </span><span class="identifier">fg</span><span> = </span><span class="string-literal">&quot;#fefefe&quot;</span><span>, </span><span class="identifier">bg</span><span> = </span><span class="string-literal">&quot;#3d3d3d&quot;</span><span>, </span><span class="identifier">style</span><span> = </span><span class="string-literal">&quot;padding: 8px; width: 50%;&quot;</span><span>)) { </span><span class="comment">/*...*/</span><span> }</span></code></pre>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;If the main class extends App, it can inherit from both XApp and App as follows:</p>
-        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>()) </span><span class="keyword">with</span><span> </span><span class="type-name">App</span><span> { </span><span class="comment">/*...*/</span><span> }
-</span><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>(</span><span class="identifier">id</span><span> = </span><span class="string-literal">&quot;domId&quot;</span><span>)) </span><span class="keyword">with</span><span> </span><span class="type-name">App</span><span> { </span><span class="comment">/*...*/</span><span> }
-</span><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>.</span><span class="identifier">light</span><span>(</span><span class="identifier">id</span><span> = </span><span class="string-literal">&quot;domId&quot;</span><span>)) </span><span class="keyword">with</span><span> </span><span class="type-name">App</span><span> { </span><span class="comment">/*...*/</span><span> }
-</span><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>.</span><span class="identifier">dark</span><span>(</span><span class="identifier">id</span><span> = </span><span class="string-literal">&quot;domId&quot;</span><span>)) </span><span class="keyword">with</span><span> </span><span class="type-name">App</span><span> { </span><span class="comment">/*...*/</span><span> }
-</span><span class="keyword">object</span><span> </span><span class="type-name">Demo</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="type-name">DivConsole</span><span>(</span><span class="identifier">id</span><span> = </span><span class="string-literal">&quot;domId&quot;</span><span>, </span><span class="identifier">fg</span><span> = </span><span class="string-literal">&quot;#fefefe&quot;</span><span>, </span><span class="identifier">bg</span><span> = </span><span class="string-literal">&quot;#3d3d3d&quot;</span><span>, </span><span class="identifier">style</span><span> = </span><span class="string-literal">&quot;padding: 8px; width: 50%;&quot;</span><span>)) </span><span class="keyword">with</span><span> </span><span class="type-name">App</span><span> { </span><span class="comment">/*...*/</span><span> }</span></code></pre>
-        <p>&lt;br /&gt;
-        &lt;h3&gt;How DemoCrossy Works:&lt;/h3&gt;</p>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;DemoCrossy relies on a parameterized trait called: <code>XApp</code> to inject an alternative implementation of an OutputStream between System.out and the default stdout if it detects a browser runtime environment.  <code>XApp</code> has no effect when running in Scala native, node.js, or the JVM.</p>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;The entire <code>XApp</code> trait:</p>
-        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">package</span><span> </span><span class="identifier">ai</span><span>.</span><span class="identifier">dragonfly</span><span>.</span><span class="identifier">democrossy</span><span>
-
-</span><span class="keyword">trait</span><span> </span><span class="type-name">XApp</span><span>(</span><span class="identifier">dc</span><span>:</span><span class="type-name">DivConsole</span><span> = </span><span class="type-name">DivConsole</span><span>()) {
-  </span><span class="type-name">System</span><span>.</span><span class="identifier">setOut</span><span>(</span><span class="identifier">out</span><span>(</span><span class="identifier">dc</span><span>))
-}</span></code></pre>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;Here, the <code>out(dc)</code> method call injects a DivOutputStream via System.setOut() if it detects a Web Browser runtime environment.  DivOutputStream parses all text written to System.out, usually through calls to <code>print(s:String)</code>, <code>println()</code>, and <code>println(s:String)</code>, then maps it to sequences of dom elements.  It further forwards these statements to the browser console.</p>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;DivOutputStream handles ANSI colors and other style codes like <code>BOLD</code>, and <code>ITALIC</code> through inline css style attributes on span elements.  It also supports special characters like: &#39;\t&#39;, &#39;\n&#39;, and &#39;\r&#39;.</p>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;Developers can customize the DOM element that hosts the console output by using the <code>DivConsole</code> factory methods:</p>
-        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">apply</span><span>(</span><span class="identifier">id</span><span>:</span><span class="type-name">String</span><span> = </span><span class="string-literal">&quot;console&quot;</span><span>, </span><span class="identifier">fg</span><span>:</span><span class="type-name">String</span><span> = </span><span class="string-literal">&quot;#eeeeee&quot;</span><span>, </span><span class="identifier">bg</span><span>:</span><span class="type-name">String</span><span> = </span><span class="string-literal">&quot;#2b2b2b&quot;</span><span>, </span><span class="identifier">style</span><span>:</span><span class="type-name">String</span><span> = </span><span class="string-literal">&quot;&quot;</span><span>):</span><span class="type-name">DivConsole</span><span>
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">dark</span><span>(</span><span class="identifier">id</span><span>:</span><span class="type-name">String</span><span> = </span><span class="string-literal">&quot;console&quot;</span><span>, </span><span class="identifier">style</span><span>:</span><span class="type-name">String</span><span> = </span><span class="string-literal">&quot;&quot;</span><span>):</span><span class="type-name">DivConsole</span><span>
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">light</span><span>(</span><span class="identifier">id</span><span>:</span><span class="type-name">String</span><span> = </span><span class="string-literal">&quot;console&quot;</span><span>, </span><span class="identifier">style</span><span>:</span><span class="type-name">String</span><span> = </span><span class="string-literal">&quot;&quot;</span><span>):</span><span class="type-name">DivConsole</span></code></pre>
-        <p>&amp;nbsp;&amp;nbsp;&amp;nbsp;The <code>id</code> parameter represents the selectable element id of a <code>&amp;#60;div&amp;#62;</code> element already present in the host html, however, if the page hasn&#39;t declared a <code>&amp;#60;div&amp;#62;</code> element with that id, DivConsole appends a new one to the <code>&amp;#60;body&amp;#62;</code>.
-        &amp;nbsp;&amp;nbsp;&amp;nbsp;The <code>fg</code> and <code>bg</code> parameters represent the html hex strings of foreground and background colors respectively.  In the DivConsole, these map to css attributes: <code>color</code> and <code>background-color</code>.
-        &amp;nbsp;&amp;nbsp;&amp;nbsp;Any additional customization occurs through the <code>style</code> parameter which should take the form of correctly formatted inline css.  For example, for padding and overflow scrolling, pass: <code>style = &quot;padding: 8px; overflow: scroll;&quot;</code>.  DivConsole will not validate any of these parameters, so users must take care to provide valid css literals.</p>
-        <p>&lt;br /&gt;
-        &lt;h3&gt;Live DemoCrossy Demonstrations:&lt;/h3&gt;</p>
-        <p>&lt;a href=&quot;https://dragonfly-ai.github.io/DemoCrossy/&quot;&gt;Built in Demo&lt;/a&gt;&lt;br /&gt;
-        &lt;a href=&quot;https://dragonfly.ai/cliviz/index.html&quot;&gt;Demonstration of cliviz, a command line visualization tool for Scala: JVM, JS, and Native.&lt;/a&gt;</p>
-        <pre><code>    &lt;/td&gt;
-    &lt;td&gt;&lt;div id=&quot;console&quot;&gt; &lt;/div&gt;&lt;/td&gt;
-
-&lt;/tr&gt;</code></pre>
-        <p>&lt;/table&gt;</p>
-        <p>&lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</p>
-
-        <hr style="margin-top: 30px"/>
-        <footer style="font-size: 90%; text-align: center">
-          DemoCrossy is a <a href="https://typelevel.org/">Typelevel</a> project distributed under the <a href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache-2.0</a> license.
-        </footer>
-
-      </main>
-
+        <div id="about" style="width: 50%; padding: 16px; float: left;">
+        
+        <h3>About this Demo:</h3>
+        
+        &nbsp;&nbsp;&nbsp;The Console Output to the right exercises three main features of DemoCrossy:<br/>
+        
+        Redefine `readLine()` as `window.prompt()`:<br/>
+        
+        
+        ```scala
+        // Simple example taken from:
+        // https://docs.scala-lang.org/overviews/scala-book/command-line-io.html
+        override def demo(): Unit = {
+          println()
+          print(&quot;Enter your first name: &quot;)
+          val firstName = readLine()
+          print(&quot;Enter your last name: &quot;)
+          val lastName = readLine()
+          println(s&quot;Your name is $firstName $lastName&quot;)
+          println()
+        }
+        ```
+        <br/>
+        
+        
+        &nbsp;&nbsp;&nbsp;Because `window.prompt()` takes a message parameter, `readLine()` passes the most recent line of consol output to prompt.<br/>
+        
+        2.  DemoCrossy provides every `XApp` context with a `prompt()` method.  In the browser, this maps directly to `window.prompt()`, in node.js it relies on the <a href="https://www.npmjs.com/package/prompt-sync">prompt-sync</a> node module so make sure you&#39;ve installed prompt-sync if you plan on running DemoCrossy command line programs on node.<br/>
+        
+        
+        ```scala
+        override def demo(): Unit = {
+          println()
+          val nationality: String = prompt(&quot;What is your nationality?&quot;)
+          println(s&quot;$nationality, huh?  Let me find my globe.&quot;)
+          println()
+        }
+        ```
+        
+        
+        &nbsp;&nbsp;&nbsp;Although not standard Scala, you can take advantage of the `prompt()` method to provide a more consistent experience across the various Scala platforms.<br/>
+        
+        3.  The final demonstration aims at exhaustive coverage of ANSI text formatting.  Although many modern ignore blink formatting, DemoCrossy honors it (for now).<br/>
+        
+        </div>
+        <div id="consoleWrapper" style="width: 50%; padding: 16px; float: right;"><h3>Standard Output:</h3><div id="console"> </div></div>
+        <p><script src="js/main.js"></script></p>
     </div>
-
-  </body>
+</div>
+</body>
 </html>
