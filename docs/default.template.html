@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
     <meta name="generator" content="Laika 0.18.1 + Helium Theme" />
+    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
     <title>${cursor.currentDocument.title}</title>
     @:for(laika.site.metadata.authors)
     <meta name="author" content="${_}"/>
@@ -23,12 +23,14 @@
     <script> /* for avoiding page load transitions */ </script>
 </head>
 <body>
-<div class="content" style="width: 50%; padding: 16px; float: left;">
-    ${cursor.currentDocument.content}
-</div>
-<div id="consoleWrapper" style="width: 50%; padding: 16px; float: right;">
-    <h3>Standard Output:</h3>
-    <div id="console"><script src="js/main.js"></script></div>
+<div>
+    <div id="consoleWrapper" style="width: 50%; padding: 16px; float: right;">
+        <h3>Standard Output:</h3>
+        <div id="console"></div>
+    </div>
+    <div class="content" style="width:50%;">
+        ${cursor.currentDocument.content}
+    </div>
 </div>
 </body>
 </html>

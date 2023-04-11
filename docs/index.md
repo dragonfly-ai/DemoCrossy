@@ -1,6 +1,6 @@
 # DemoCrossy
 
-###About this Demo:
+## About this Demo:
 
 
 &nbsp;&nbsp;&nbsp;The Console Output to the right exercises three main features of DemoCrossy:<br />
@@ -45,3 +45,5 @@ override def demo(): Unit = {
 <br />
 <a href="https://github.com/dragonfly-ai/DemoCrossy">Back to DemoCrossy GitHub Project</a><br />
 <a href="https://github.com/dragonfly-ai/">Other Projects by dragonfly.ai</a><br />
+
+<script src="js/main.js"></script>
