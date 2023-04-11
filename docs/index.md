@@ -88,4 +88,5 @@ def light(id:String = "console", style:String = ""):DivConsole
     </tr>
 
 </table>
+
 <script src="js/main.js"></script>
