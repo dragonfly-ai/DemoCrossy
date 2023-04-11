@@ -21,5 +21,5 @@ package ai.dragonfly.democrossy
  */
 
 package object native {
-  def out(dc:DivConsole):java.io.PrintStream = System.out
+  def out(dc:NativeConsole):java.io.PrintStream = System.out
 }

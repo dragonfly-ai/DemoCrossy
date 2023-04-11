@@ -8,7 +8,6 @@ ThisBuild / developers := List( tlGitHubDev("dragonfly-ai", "dragonfly.ai") )
 
 ThisBuild / scalaVersion := "3.2.1"
 ThisBuild / tlSonatypeUseLegacyHost := false
-ThisBuild / tlSitePublishBranch := Some("main")
 
 lazy val democrossy = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .crossType(CrossType.Full)
@@ -39,4 +38,4 @@ lazy val demo = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   )
 
 
-lazy val docs = project.in(file("site")).enablePlugins(TypelevelSitePlugin)
+lazy val docs = project.in(file("site")) //.enablePlugins(TypelevelSitePlugin)

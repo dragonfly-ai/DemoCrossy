@@ -16,6 +16,7 @@
 
 package ai.dragonfly.democrossy
 
-trait XApp(dc:DivConsole = DivConsole()) {
+trait XApp(dc:NativeConsole = NativeConsole()) {
   System.setOut(out(dc))
+  export dc.*
 }

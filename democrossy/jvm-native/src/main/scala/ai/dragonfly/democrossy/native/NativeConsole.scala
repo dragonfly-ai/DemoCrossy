@@ -18,9 +18,17 @@ package ai.dragonfly.democrossy.native
 
 import ai.dragonfly.democrossy.*
 
-object DivConsole {
-  private val dc:DivConsole = new DivConsole()
-  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):DivConsole = dc
-  def dark(i:String = "console", s:String = ""):DivConsole = dc
-  def light(id:String = "console", style:String = ""):DivConsole = dc
+object NativeConsole {
+  private val nc:NativeConsole = new JVM_And_Native_Console()
+  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):NativeConsole = nc
+  def dark(id:String = "console", style:String = ""):NativeConsole = nc
+  def light(id:String = "console", style:String = ""):NativeConsole = nc
+}
+
+class JVM_And_Native_Console extends NativeConsole {
+  override def readLine(): String = scala.io.StdIn.readLine()
+  override def prompt(message:String):String = {
+    println(message)
+    readLine()
+  }
 }

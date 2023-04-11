@@ -20,9 +20,7 @@ import ai.dragonfly.democrossy.given
 import scala.language.implicitConversions
 
 import Console.*
-
 trait Demonstration {
-
   def name:String
   def demo():Unit
 

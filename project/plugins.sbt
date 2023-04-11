@@ -12,5 +12,3 @@ addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % crossVer)
 
 // sbt-typelevel for publication and outreach
 addSbtPlugin("org.typelevel" % "sbt-typelevel" % "0.4.19")
-// Make me a website!
-addSbtPlugin("org.typelevel" % "sbt-typelevel-site" % "0.4.19")

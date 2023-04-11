@@ -27,7 +27,7 @@ import scala.scalajs.js.typedarray.{BigInt64Array, Float32Array, Float64Array, I
 
 package object native {
 
-  def out(dc:DivConsole):java.io.PrintStream = dc match {
+  def out(dc:NativeConsole):java.io.PrintStream = dc match {
     case bdc: BrowserDivConsole => new java.io.PrintStream(new DivOutputStream(bdc))
     case _ => System.out
   }

@@ -21,8 +21,11 @@ import org.scalajs.dom
 
 import scala.collection.mutable
 
-object DivConsole {
+object NativeConsole {
 
+  /**
+   * this detects the environment by trying to insert support for ANSI blink formatting.
+   */
   val browser:Boolean = try {
     dom.window.document.head.append({
       val style:dom.HTMLStyleElement  = dom.document.createElement("style").asInstanceOf[dom.HTMLStyleElement]
@@ -34,18 +37,34 @@ object DivConsole {
     case _ :Throwable => false
   }
 
-  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):DivConsole = {
+  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):NativeConsole = {
     if (browser) BrowserDivConsole(id, fg, bg, style)
-    else new DivConsole()
+    else new NodeJS_Console()
   }
 
-  def dark(i:String = "console", s:String = ""):DivConsole = apply(id = i, style = s)
+  def dark(i:String = "console", s:String = ""):NativeConsole = apply(id = i, style = s)
 
-  def light(id:String = "console", style:String = ""):DivConsole = apply(id, "#2b2b2b", "#eeeeee", style)
+  def light(id:String = "console", style:String = ""):NativeConsole = apply(id, "#2b2b2b", "#eeeeee", style)
 }
 
+class NodeJS_Console extends NativeConsole {
+
+  import scala.scalajs.js
+  import js.Dynamic.global
+
+  private val prompt_sync:js.Dynamic = global.require("prompt-sync")() //js.Dynamic.literal(sigint = true))
+
+  override def readLine(): String = prompt_sync().asInstanceOf[String]
+
+  override def prompt(message: String): String = {
+    println(message)
+    readLine()
+  }
+}
+
+
 object BrowserDivConsole {
-  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):DivConsole = new BrowserDivConsole(id, fg, bg, style)
+  def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):NativeConsole = new BrowserDivConsole(id, fg, bg, style)
 }
 
 class BrowserDivConsole private (
@@ -53,7 +72,7 @@ class BrowserDivConsole private (
   val dFG:String,
   val dBG:String,
   val style:String
-) extends DivConsole {
+) extends NativeConsole {
 
   private var fg: String = dFG
   private var bg: String = dBG
@@ -62,6 +81,24 @@ class BrowserDivConsole private (
   private val mods:mutable.HashSet[StyleSignal] = new mutable.HashSet[StyleSignal]()
   private var lineNumber:Long = 0L
 
+  override def readLine():String = {
+    val line:String = dom.window.prompt(
+      dom.document.getElementById(s"$id-${lineNumber - 1}").innerText
+    )
+    append(line)
+    append("\n")
+    line
+  }
+
+  override def prompt(message: String): String = {
+    append(message)
+    append(" ")
+    val line: String = dom.window.prompt(message)
+    append(line)
+    append("\n")
+    line
+  }
+
   val body:dom.HTMLBodyElement = dom.window.document.body.asInstanceOf[dom.HTMLBodyElement]
 
   val cdiv:dom.HTMLDivElement = {
@@ -69,13 +106,13 @@ class BrowserDivConsole private (
       case null =>
         val t0 = dom.document.createElement("div")
         t0.id = id
+        body.append(t0)
         t0.asInstanceOf[dom.HTMLDivElement]
       case t0: dom.HTMLDivElement => t0
     }
 
     temp.setAttribute("style",s"font-family:monospace;color:$dFG;background-color:$dBG;white-space:pre;$style")
 
-    body.append(temp)
     temp
   }
 
