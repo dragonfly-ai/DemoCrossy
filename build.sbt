@@ -1,4 +1,7 @@
-ThisBuild / tlBaseVersion := "0.1"
+val appVersion:String = "0.1"
+val globalScalaVersion = "3.2.1"
+
+ThisBuild / tlBaseVersion := appVersion
 
 ThisBuild / organization := "ai.dragonfly"
 ThisBuild / organizationName := "dragonfly.ai"
@@ -6,7 +9,7 @@ ThisBuild / startYear := Some(2023)
 ThisBuild / licenses := Seq(License.Apache2)
 ThisBuild / developers := List( tlGitHubDev("dragonfly-ai", "dragonfly.ai") )
 
-ThisBuild / scalaVersion := "3.2.1"
+ThisBuild / scalaVersion := globalScalaVersion
 ThisBuild / tlSonatypeUseLegacyHost := false
 
 lazy val democrossy = crossProject(JSPlatform, JVMPlatform, NativePlatform)
@@ -14,7 +17,7 @@ lazy val democrossy = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .settings(
   name := "democrossy",
   description := "Re-rout console output to a selectable DOM element in ScalaJS, without impeding default behavior in Scala JVM and Scala Native!",
-  version := "0.1"
+  version := appVersion
 ).jvmSettings(
   libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.1.0"
 ).jsSettings(
@@ -38,4 +41,18 @@ lazy val demo = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   )
 
 
-lazy val docs = project.in(file("site")).enablePlugins(TypelevelSitePlugin)
+lazy val docs = project.in(file("site")).enablePlugins(TypelevelSitePlugin).settings(
+  mdocVariables := Map(
+    "VERSION" -> appVersion,
+    "SCALA_VERSION" -> globalScalaVersion
+  ),
+  laikaConfig ~= { _.withRawContent }
+)
+
+lazy val unidocs = project
+  .in(file("unidocs"))
+  .enablePlugins(TypelevelUnidocPlugin) // also enables the ScalaUnidocPlugin
+  .settings(
+    name := "democrossy-docs",
+    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(democrossy.jvm, democrossy.js, democrossy.native)
+  )

@@ -20,8 +20,40 @@ import Console.*
 
 object Demo extends XApp(NativeConsole(style = "padding: 8px; overflow: scroll;")) with App {
 
+  val dA: Demonstration = new Demonstration {
 
-  val d1: Demonstration = new Demonstration {
+    /* simple example taken from:
+     * https://docs.scala-lang.org/overviews/scala-book/command-line-io.html
+     */
+    override def demo(): Unit = {
+      println()
+      print("Enter your first name: ")
+      val firstName = readLine()
+      print("Enter your last name: ")
+      val lastName = readLine()
+      println(s"Your name is $firstName $lastName")
+      println()
+    }
+
+    override def name: String = "readLine()"
+
+  }
+
+
+  val dB: Demonstration = new Demonstration {
+
+    override def demo(): Unit = {
+      println()
+      val nationality: String = prompt("What is your nationality?")
+      println(s"$nationality, huh?  Let me find my globe.")
+      println()
+    }
+
+    override def name: String = "prompt(message)"
+
+  }
+
+  val dC: Demonstration = new Demonstration {
 
     override def demo(): Unit = {
 
@@ -54,41 +86,10 @@ object Demo extends XApp(NativeConsole(style = "padding: 8px; overflow: scroll;"
     override def name: String = "Hello World"
   }
 
-  val d2: Demonstration = new Demonstration {
-
-    override def demo(): Unit = {
-      println()
-      // simple demo taken from: https://docs.scala-lang.org/overviews/scala-book/command-line-io.html
-      print("Enter your first name: ")
-      val firstName = readLine()
-      print("Enter your last name: ")
-      val lastName = readLine()
-      println(s"Your name is $firstName $lastName")
-      println()
-    }
-
-    override def name: String = "readLine()"
-
-  }
-
-
-  val d3: Demonstration = new Demonstration {
-
-    override def demo(): Unit = {
-      println()
-      val nationality:String = prompt("What is your nationality?")
-      println(s"$nationality, huh?  Let me find my globe.")
-      println()
-    }
-
-    override def name: String = "prompt(message)"
-
-  }
-
-  d1.demonstrate
+  dA.demonstrate
   println("\n\n\n")
-  d2.demonstrate
+  dB.demonstrate
   println("\n\n\n")
-  d3.demonstrate
+  dC.demonstrate
 
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="${?laika.site.metadata.language}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+    <meta name="generator" content="Laika 0.18.1 + Helium Theme" />
+    <title>${cursor.currentDocument.title}</title>
+    @:for(laika.site.metadata.authors)
+    <meta name="author" content="${_}"/>
+    @:@
+    @:for(laika.site.metadata.description)
+    <meta name="description" content="${_}"/>
+    @:@
+    @:for(helium.webFonts)
+    <link rel="stylesheet" href="${_}">
+    @:@
+    @:linkCSS { paths = ${helium.site.includeCSS} }
+    @:linkJS { paths = ${helium.site.includeJS} }
+    @:heliumInitVersions
+    @:heliumInitPreview(container)
+    <script> /* for avoiding page load transitions */ </script>
+</head>
+<body>
+<div id="container">
+    <div class="content" style="width:90%;">
+        ${cursor.currentDocument.content}
+    </div>
+</div>
+</body>
+</html>

@@ -1,92 +1,51 @@
-<table style="width: 98%; height: 98%;">
-    <tr>
-        <td style="width:50%;">Notes:</td>
-        <td style="width:50%;">Console Output:</td>
-    </tr>
-    <tr style="align:top;">
-        <td>
-
 # DemoCrossy
 
-&nbsp;&nbsp;&nbsp;A Scala library that painlessly routes standard output to selectable DOMElements via Scala.js when deployed in the browser while leaving stdout functionally unaffected when deployed in Native, JVM and Node.js environments.
-<br />
+<div id="about" style="width: 50%; padding: 16px; float: left;">
 
-<h3>What is DemoCrossy's Intended Purpose:</h3>
+<h3>About this Demo:</h3>
 
-&nbsp;&nbsp;&nbsp;As a tool, DemoCrossy occupies a space between Scastie and Fiddle by making it painless and easy to deploy Scala.js Cross Projects with command line applications directly into web pages.  This gives developers a convenient way to deploy demonstrations of their libraries so that other developers can comfortably evaluate them without pulling source code or installing dependencies.
+&nbsp;&nbsp;&nbsp;The Console Output to the right exercises three main features of DemoCrossy:<br />
 
-<h3>How to use DemoCrossy:</h3>
+Redefine `readLine()` as `window.prompt()`:<br />
 
-&nbsp;&nbsp;&nbsp;To include it as an SBT dependency, modify `build.sbt` as follows:
 
 ```scala
-resolvers += "dragonfly.ai" at "https://code.dragonfly.ai/"
-libraryDependencies += "ai.dragonfly.code" %%% "democrossy" % "0.02"
-```
-
-&nbsp;&nbsp;&nbsp;Then extend the XApp trait from the main class.
-
-&nbsp;&nbsp;&nbsp;If it relies on a main method, simply extend XApp directly:
-
-```scala
-object Demo extends XApp(DivConsole()) { /*...*/ }
-object Demo extends XApp(DivConsole(id = "domId")) { /*...*/ }
-object Demo extends XApp(DivConsole.light(id = "domId")) { /*...*/ }
-object Demo extends XApp(DivConsole.dark(id = "domId")) { /*...*/ }
-object Demo extends XApp(DivConsole(id = "domId", fg = "#fefefe", bg = "#3d3d3d", style = "padding: 8px; width: 50%;")) { /*...*/ }
-```
-
-&nbsp;&nbsp;&nbsp;If the main class extends App, it can inherit from both XApp and App as follows:
-
-```scala
-object Demo extends XApp(DivConsole()) with App { /*...*/ }
-object Demo extends XApp(DivConsole(id = "domId")) with App { /*...*/ }
-object Demo extends XApp(DivConsole.light(id = "domId")) with App { /*...*/ }
-object Demo extends XApp(DivConsole.dark(id = "domId")) with App { /*...*/ }
-object Demo extends XApp(DivConsole(id = "domId", fg = "#fefefe", bg = "#3d3d3d", style = "padding: 8px; width: 50%;")) with App { /*...*/ }
-```
-<br />
-<h3>How DemoCrossy Works:</h3>
-
-&nbsp;&nbsp;&nbsp;DemoCrossy relies on a parameterized trait called: `XApp` to inject an alternative implementation of an OutputStream between System.out and the default stdout if it detects a browser runtime environment.  `XApp` has no effect when running in Scala native, node.js, or the JVM.
-
-&nbsp;&nbsp;&nbsp;The entire `XApp` trait:
-```scala
-package ai.dragonfly.democrossy
-
-trait XApp(dc:DivConsole = DivConsole()) {
-  System.setOut(out(dc))
+// Simple example taken from:
+// https://docs.scala-lang.org/overviews/scala-book/command-line-io.html
+override def demo(): Unit = {
+  println()
+  print("Enter your first name: ")
+  val firstName = readLine()
+  print("Enter your last name: ")
+  val lastName = readLine()
+  println(s"Your name is $firstName $lastName")
+  println()
 }
 ```
-&nbsp;&nbsp;&nbsp;Here, the `out(dc)` method call injects a DivOutputStream via System.setOut() if it detects a Web Browser runtime environment.  DivOutputStream parses all text written to System.out, usually through calls to `print(s:String)`, `println()`, and `println(s:String)`, then maps it to sequences of dom elements.  It further forwards these statements to the browser console.
+<br />
 
-&nbsp;&nbsp;&nbsp;DivOutputStream handles ANSI colors and other style codes like `BOLD`, and `ITALIC` through inline css style attributes on span elements.  It also supports special characters like: '\t', '\n', and '\r'.
 
-&nbsp;&nbsp;&nbsp;Developers can customize the DOM element that hosts the console output by using the `DivConsole` factory methods:
+&nbsp;&nbsp;&nbsp;Because `window.prompt()` takes a message parameter, `readLine()` passes the most recent line of consol output to prompt.<br />
+
+2.  DemoCrossy provides every `XApp` context with a `prompt()` method.  In the browser, this maps directly to `window.prompt()`, in node.js it relies on the <a href="https://www.npmjs.com/package/prompt-sync">prompt-sync</a> node module so make sure you've installed prompt-sync if you plan on running DemoCrossy command line programs on node.<br />
+
 
 ```scala
-def apply(id:String = "console", fg:String = "#eeeeee", bg:String = "#2b2b2b", style:String = ""):DivConsole
-
-def dark(id:String = "console", style:String = ""):DivConsole
-
-def light(id:String = "console", style:String = ""):DivConsole
+override def demo(): Unit = {
+  println()
+  val nationality: String = prompt("What is your nationality?")
+  println(s"$nationality, huh?  Let me find my globe.")
+  println()
+}
 ```
 
-&nbsp;&nbsp;&nbsp;The `id` parameter represents the selectable element id of a `&#60;div&#62;` element already present in the host html, however, if the page hasn't declared a `&#60;div&#62;` element with that id, DivConsole appends a new one to the `&#60;body&#62;`.
-&nbsp;&nbsp;&nbsp;The `fg` and `bg` parameters represent the html hex strings of foreground and background colors respectively.  In the DivConsole, these map to css attributes: `color` and `background-color`.
-&nbsp;&nbsp;&nbsp;Any additional customization occurs through the `style` parameter which should take the form of correctly formatted inline css.  For example, for padding and overflow scrolling, pass: `style = "padding: 8px; overflow: scroll;"`.  DivConsole will not validate any of these parameters, so users must take care to provide valid css literals.
 
-<br />
-<h3>Live DemoCrossy Demonstrations:</h3>
+&nbsp;&nbsp;&nbsp;Although not standard Scala, you can take advantage of the `prompt()` method to provide a more consistent experience across the various Scala platforms.<br />
 
-<a href="https://dragonfly-ai.github.io/DemoCrossy/">Built in Demo</a><br />
-<a href="https://dragonfly.ai/cliviz/index.html">Demonstration of cliviz, a command line visualization tool for Scala: JVM, JS, and Native.</a>
+3.  The final demonstration aims at exhaustive coverage of ANSI text formatting.  Although many modern ignore blink formatting, DemoCrossy honors it (for now).<br />
 
-        </td>
-        <td><div id="console"> </div></td>
+</div>
 
-    </tr>
-
-</table>
+<div id="consoleWrapper" style="width: 50%; padding: 16px; float: right;"><h3>Standard Output:</h3><div id="console"> </div></div>
 
 <script src="js/main.js"></script>
