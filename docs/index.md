@@ -1,12 +1,11 @@
 # DemoCrossy
 
-<div id="about" style="width: 50%; padding: 16px; float: left;">
+###About this Demo:
 
-<h3>About this Demo:</h3>
 
 &nbsp;&nbsp;&nbsp;The Console Output to the right exercises three main features of DemoCrossy:<br />
 
-Redefine `readLine()` as `window.prompt()`:<br />
+1. Redefine `readLine()` as `window.prompt()`:<br />
 
 
 ```scala
@@ -22,7 +21,6 @@ override def demo(): Unit = {
   println()
 }
 ```
-<br />
 
 
 &nbsp;&nbsp;&nbsp;Because `window.prompt()` takes a message parameter, `readLine()` passes the most recent line of consol output to prompt.<br />
@@ -44,8 +42,6 @@ override def demo(): Unit = {
 
 3.  The final demonstration aims at exhaustive coverage of ANSI text formatting.  Although many modern ignore blink formatting, DemoCrossy honors it (for now).<br />
 
-</div>
-
-<div id="consoleWrapper" style="width: 50%; padding: 16px; float: right;"><h3>Standard Output:</h3><div id="console"> </div></div>
-
-<script src="js/main.js"></script>
+<br />
+<a href="https://github.com/dragonfly-ai/DemoCrossy">Back to DemoCrossy GitHub Project</a><br />
+<a href="https://github.com/dragonfly-ai/">Other Projects by dragonfly.ai</a><br />

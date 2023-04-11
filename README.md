@@ -3,7 +3,7 @@
 
 &nbsp;&nbsp;&nbsp;This Scala.js library can help you deploy Scala command line applications directly into web pages by routing and formatting `System.out` to a DOM element and expressing `readLine()`statements as calls to `window.prompt()`.
 
-<a href="https://dragonfly-ai.github.io/DemoCrossy/"><h3>Try the demo now!</h3></a>
+<a href="https://dragonfly-ai.github.io/DemoCrossy/index"><h3>Try the demo now!</h3></a>
 
 &nbsp;&nbsp;&nbsp;As a tool, DemoCrossy occupies a space between <a href="https://scastie.scala-lang.org/">Scastie</a>, <a href="https://github.com/scalafiddle">scalafiddle</a>, and <a href="https://scalameta.org/mdoc/">mdoc</a> by making it painless and easy to deploy Scala.js Cross Projects with command line applications directly into web pages.  This gives developers a convenient way to deploy demonstrations of their libraries so that other developers can comfortably evaluate them without pulling source code or installing dependencies.
 
@@ -71,4 +71,4 @@ def light(id:String = "console", style:String = ""):NativeConsole
 &nbsp;&nbsp;&nbsp;Any additional customization occurs through the `style` parameter which should take the form of correctly formatted inline css.  For example, for padding and overflow scrolling, pass: `style = "padding: 8px; overflow: scroll;"`.  NativeConsole will not validate any of these parameters, so users must take care to provide valid css literals.
 
 
-<a href="https://dragonfly-ai.github.io/DemoCrossy/"><h3>Try the demo now!</h3></a><br />
+<a href="https://dragonfly-ai.github.io/DemoCrossy/index"><h3>Try the demo now!</h3></a><br />

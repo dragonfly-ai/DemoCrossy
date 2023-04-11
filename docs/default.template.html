@@ -23,10 +23,13 @@
     <script> /* for avoiding page load transitions */ </script>
 </head>
 <body>
-<div id="container">
-    <div class="content" style="width:90%;">
-        ${cursor.currentDocument.content}
-    </div>
+<div class="content" style="width: 50%; padding: 16px; float: left;">
+    ${cursor.currentDocument.content}
 </div>
+<div id="consoleWrapper" style="width: 50%; padding: 16px; float: right;">
+    <h3>Standard Output:</h3>
+    <div id="console"></div>
+</div>
+<script src="js/main.js"></script>
 </body>
 </html>
