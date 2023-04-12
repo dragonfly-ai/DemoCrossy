@@ -1,15 +1,15 @@
 val appVersion:String = "0.1"
 val globalScalaVersion = "3.2.1"
 
-ThisBuild / tlBaseVersion := appVersion
-
 ThisBuild / organization := "ai.dragonfly"
 ThisBuild / organizationName := "dragonfly.ai"
 ThisBuild / startYear := Some(2023)
 ThisBuild / licenses := Seq(License.Apache2)
 ThisBuild / developers := List( tlGitHubDev("dragonfly-ai", "dragonfly.ai") )
-
 ThisBuild / scalaVersion := globalScalaVersion
+
+ThisBuild / tlBaseVersion := appVersion
+ThisBuild / tlCiReleaseBranches := Seq()
 ThisBuild / tlSonatypeUseLegacyHost := false
 
 lazy val democrossy = crossProject(JSPlatform, JVMPlatform, NativePlatform)
