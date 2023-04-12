@@ -1,4 +1,4 @@
-val appVersion:String = "0.1"
+val appVersion:String = "0.101"
 val globalScalaVersion = "3.2.1"
 
 ThisBuild / organization := "ai.dragonfly"
@@ -40,6 +40,7 @@ lazy val demo = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     exportJars := true
   )
 
+lazy val root = tlCrossRootProject.aggregate(democrossy).settings(name := "democrossy")
 
 lazy val docs = project.in(file("site")).enablePlugins(TypelevelSitePlugin).settings(
   mdocVariables := Map(
