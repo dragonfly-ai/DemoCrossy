@@ -18,7 +18,7 @@ import ai.dragonfly.democrossy.*
 
 import Console.*
 
-object Demo extends XApp(NativeConsole(style = "padding: 8px; overflow: scroll;")) with App {
+object Demo extends XApp(NativeConsole(style = "width: 45%; padding: 16px; float: right; overflow: scroll; position:absolute; top:2%; right: 2%;")) with App {
 
   val dA: Demonstration = new Demonstration {
 
