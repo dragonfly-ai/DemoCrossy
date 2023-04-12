@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
     <meta name="generator" content="Laika 0.18.1 + Helium Theme" />
+    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
     <title>DemoCrossy</title>
     
     <meta name="author" content="dragonfly.ai"/>
@@ -28,15 +28,16 @@
     <script> /* for avoiding page load transitions */ </script>
 </head>
 <body>
-<div class="content" style="width: 50%; padding: 16px; float: left;">
-    <h1 id="democrossy" class="title">DemoCrossy</h1>
-    
-    <h3 id="about-this-demo" class="section">About this Demo:<a class="anchor-link right" href="#about-this-demo"><i class="icofont-laika">&#xef71;</i></a></h3>
-    <p>&nbsp;&nbsp;&nbsp;The Console Output to the right exercises three main features of DemoCrossy:<br/></p>
-    <ol class="arabic">
-      <li>Redefine <code>readLine()</code> as <code>window.prompt()</code>:<br/></li>
-    </ol>
-    <pre class="keep-together pdf epub"><code class="nohighlight"><span class="comment">// Simple example taken from:
+<div>
+    <div class="content" style="width:45%; padding: 16px; position:absolute; top:0px; left: 0px;">
+        <h1 id="democrossy" class="title">DemoCrossy</h1>
+        
+        <h2 id="about-this-demo" class="section">About this Demo:<a class="anchor-link right" href="#about-this-demo"><i class="icofont-laika">&#xef71;</i></a></h2>
+        <p>&nbsp;&nbsp;&nbsp;The Console Output to the right exercises three main features of DemoCrossy:<br/></p>
+        <ol class="arabic">
+          <li>Redefine <code>readLine()</code> as <code>window.prompt()</code>:<br/></li>
+        </ol>
+        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="comment">// Simple example taken from:
 // https://docs.scala-lang.org/overviews/scala-book/command-line-io.html
 </span><span class="keyword">override</span><span> </span><span class="keyword">def</span><span> </span><span class="declaration-name">demo</span><span>(): </span><span class="type-name">Unit</span><span> = {
   </span><span class="identifier">println</span><span>()
@@ -47,28 +48,25 @@
   </span><span class="identifier">println</span><span>(</span><span class="string-literal">s&quot;Your name is </span><span class="substitution">$firstName</span><span class="string-literal"> </span><span class="substitution">$lastName</span><span class="string-literal">&quot;</span><span>)
   </span><span class="identifier">println</span><span>()
 }</span></code></pre>
-    <p>&nbsp;&nbsp;&nbsp;Because <code>window.prompt()</code> takes a message parameter, <code>readLine()</code> passes the most recent line of consol output to prompt.<br/></p>
-    <ol class="arabic">
-      <li>DemoCrossy provides every <code>XApp</code> context with a <code>prompt()</code> method.  In the browser, this maps directly to <code>window.prompt()</code>, in node.js it relies on the <a href="https://www.npmjs.com/package/prompt-sync">prompt-sync</a> node module so make sure you&#39;ve installed prompt-sync if you plan on running DemoCrossy command line programs on node.<br/></li>
-    </ol>
-    <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">override</span><span> </span><span class="keyword">def</span><span> </span><span class="declaration-name">demo</span><span>(): </span><span class="type-name">Unit</span><span> = {
+        <p>&nbsp;&nbsp;&nbsp;Because <code>window.prompt()</code> takes a message parameter, <code>readLine()</code> passes the most recent line of consol output to prompt.<br/></p>
+        <ol class="arabic">
+          <li>DemoCrossy provides every <code>XApp</code> context with a <code>prompt()</code> method.  In the browser, this maps directly to <code>window.prompt()</code>, in node.js it relies on the <a href="https://www.npmjs.com/package/prompt-sync">prompt-sync</a> node module so make sure you&#39;ve installed prompt-sync if you plan on running DemoCrossy command line programs on node.<br/></li>
+        </ol>
+        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">override</span><span> </span><span class="keyword">def</span><span> </span><span class="declaration-name">demo</span><span>(): </span><span class="type-name">Unit</span><span> = {
   </span><span class="identifier">println</span><span>()
   </span><span class="keyword">val</span><span> </span><span class="identifier">nationality</span><span>: </span><span class="type-name">String</span><span> = </span><span class="identifier">prompt</span><span>(</span><span class="string-literal">&quot;What is your nationality?&quot;</span><span>)
   </span><span class="identifier">println</span><span>(</span><span class="string-literal">s&quot;</span><span class="substitution">$nationality</span><span class="string-literal">, huh?  Let me find my globe.&quot;</span><span>)
   </span><span class="identifier">println</span><span>()
 }</span></code></pre>
-    <p>&nbsp;&nbsp;&nbsp;Although not standard Scala, you can take advantage of the <code>prompt()</code> method to provide a more consistent experience across the various Scala platforms.<br/></p>
-    <ol class="arabic">
-      <li>The final demonstration aims at exhaustive coverage of ANSI text formatting.  Although many modern ignore blink formatting, DemoCrossy honors it (for now).<br/></li>
-    </ol>
-    <p><br/>
-    <a href="https://github.com/dragonfly-ai/DemoCrossy">Back to DemoCrossy GitHub Project</a><br/>
-    <a href="https://github.com/dragonfly-ai/">Other Projects by dragonfly.ai</a><br/></p>
+        <p>&nbsp;&nbsp;&nbsp;Although not standard Scala, you can take advantage of the <code>prompt()</code> method to provide a more consistent experience across the various Scala platforms.<br/></p>
+        <ol class="arabic">
+          <li>The final demonstration aims at exhaustive coverage of ANSI text formatting.  Although many modern ignore blink formatting, DemoCrossy honors it (for now).<br/></li>
+        </ol>
+        <p><hr/>
+        <a href="https://github.com/dragonfly-ai/DemoCrossy">Back to DemoCrossy GitHub Project</a><br/>
+        <a href="https://github.com/dragonfly-ai/">Other Projects by dragonfly.ai</a><br/></p>
+        <p><script src="js/main.js"></script></p>
+    </div>
 </div>
-<div id="consoleWrapper" style="width: 50%; padding: 16px; float: right;">
-    <h3>Standard Output:</h3>
-    <div id="console"></div>
-</div>
-<script src="js/main.js"></script>
 </body>
 </html>
