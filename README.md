@@ -10,7 +10,7 @@
 &nbsp;&nbsp;&nbsp;To include it as an SBT dependency, modify `build.sbt` as follows:
 
 ```scala
-libraryDependencies += "ai.dragonfly.code" %%% "democrossy" % "0.1"
+libraryDependencies += "ai.dragonfly" %%% "democrossy" % "<LATEST_VERSION>"
 ```
 
 &nbsp;&nbsp;&nbsp;Then extend the `XApp` trait from the main class.
