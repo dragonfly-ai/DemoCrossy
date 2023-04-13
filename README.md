@@ -1,9 +1,7 @@
 # DemoCrossy
 
 
-&nbsp;&nbsp;&nbsp;This Scala.js library can help you deploy Scala command line applications directly into web pages by routing and formatting `System.out` to a DOM element and expressing `readLine()`statements as calls to `window.prompt()`.
-
-<a href="https://dragonfly-ai.github.io/DemoCrossy/index"><h3>Try the demo now!</h3></a>
+&nbsp;&nbsp;&nbsp;This Scala.js library can help you deploy Scala command line applications directly into web pages by routing and formatting `System.out` to a DOM element and expressing `readLine()`statements as calls to `window.prompt()`.  To quickly understand what DemoCrossy can do, you may <a href="https://dragonfly-ai.github.io/DemoCrossy/index">try the demo.</a>
 
 &nbsp;&nbsp;&nbsp;As a tool, DemoCrossy occupies a space between <a href="https://scastie.scala-lang.org/">Scastie</a>, <a href="https://github.com/scalafiddle">scalafiddle</a>, and <a href="https://scalameta.org/mdoc/">mdoc</a> by making it painless and easy to deploy Scala.js Cross Projects with command line applications directly into web pages.  This gives developers a convenient way to deploy demonstrations of their libraries so that other developers can comfortably evaluate them without pulling source code or installing dependencies.
 
@@ -70,5 +68,6 @@ def light(id:String = "console", style:String = ""):NativeConsole
 &nbsp;&nbsp;&nbsp;The `fg` and `bg` parameters represent the html hex strings of foreground and background colors respectively.  In the NativeConsole, these map to css attributes: `color` and `background-color`.
 &nbsp;&nbsp;&nbsp;Any additional customization occurs through the `style` parameter which should take the form of correctly formatted inline css.  For example, for padding and overflow scrolling, pass: `style = "padding: 8px; overflow: scroll;"`.  NativeConsole will not validate any of these parameters, so users must take care to provide valid css literals.
 
-
-<a href="https://dragonfly-ai.github.io/DemoCrossy/index"><h3>Try the demo now!</h3></a><br />
+<a href="https://dragonfly-ai.github.io/DemoCrossy/index">Try the demo!</a><br />
+<hr />
+<a href="https://github.com/dragonfly-ai/">Other Projects by dragonfly.ai</a><br />

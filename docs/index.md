@@ -39,4 +39,4 @@ override def demo(): Unit = {
 <a href="https://github.com/dragonfly-ai/DemoCrossy">Back to DemoCrossy GitHub Project</a><br />
 <a href="https://github.com/dragonfly-ai/">Other Projects by dragonfly.ai</a><br />
 
-<script src="js/main.js"></script>
+<script type="application/javascript" src="js/main.js"></script>
