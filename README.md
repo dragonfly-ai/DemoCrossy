@@ -28,10 +28,12 @@ object Demo extends XApp(NativeConsole.dark(id = "domId")) { /* dark themed with
 
 object Demo extends XApp(
   NativeConsole(
-    id = "domId", fg = "#fefefe", bg = "#3d3d3d", style = "padding: 8px; width: 50%;"
+    id = "domId", fg = "#fefefe", bg = "#3d3d3d", style = "font-family: 'Courier New', monospace; padding: 8px; width: 50%;"
   )
 ) { /* specified DOM Element ID, foreground and background colors along with inline style */ }
 ```
+
+Note: Console output tends to look better with monospace fonts such as: Courier New, and Ubuntu Mono.  Be sure to style your console DOM element with a monospace font either with a CSS class, or by passing the `font-family` attribute directly into the inline style as shown in the final demo above.
 
 &nbsp;&nbsp;&nbsp;If the main class extends App, it can inherit from both XApp and App as follows:
 

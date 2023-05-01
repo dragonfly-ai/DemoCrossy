@@ -24,12 +24,15 @@ import scala.collection.mutable
 object NativeConsole {
 
   /**
-   * this detects the environment by trying to insert support for ANSI blink formatting.
+   * this detects the environment by trying to insert support for ANSI blink formatting and also a monospace font.
    */
   val browser:Boolean = try {
     dom.window.document.head.append({
       val style:dom.HTMLStyleElement  = dom.document.createElement("style").asInstanceOf[dom.HTMLStyleElement]
       style.append("@keyframes blink { 0% { opacity: 1; } 100% { opacity: 0; } }")
+      style.append("font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', Ubuntu, monospace;")
+//      style.append("@font -face { font-family: 'Gardens'; src: url('../fonts/GardensC_03_1.ttf') format ('truetype'); }")
+//      style.append("<!--[if IE]><link rel='stylesheet' type='text/css' media='all' href='./css/ie-fonts.css' /><![endif]-->")
       style
     })
     true
@@ -111,7 +114,7 @@ class BrowserDivConsole private (
       case t0: dom.HTMLDivElement => t0
     }
 
-    temp.setAttribute("style",s"font-family:monospace;color:$dFG;background-color:$dBG;white-space:pre;$style")
+    temp.setAttribute("style",s"color:$dFG;background-color:$dBG;white-space:pre;$style")
 
     temp
   }
